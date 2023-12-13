@@ -15,5 +15,5 @@ Integrated Punk Api https://punkapi.com/documentation/v2 into an Android App.
 
 Screenshots
 
-<img src="https://github.com/SureshNalam/PunkApp/assets/33048783/22cfee8c-547b-4a47-a917-90d75549ac1d" width="480" height="1080">
-<img src="https://github.com/SureshNalam/PunkApp/assets/33048783/4b720154-867f-4785-b711-9c0748c14cf8" width="480" height="1080">
+<img src="https://github.com/SureshNalam/PunkApp/assets/33048783/71fb8443-b7f5-4e70-8a62-4ff9eae63176" width="480" height="1080">
+<img src="https://github.com/SureshNalam/PunkApp/assets/33048783/95eb370b-5355-468d-b604-94b5335cb268" width="480" height="1080">
