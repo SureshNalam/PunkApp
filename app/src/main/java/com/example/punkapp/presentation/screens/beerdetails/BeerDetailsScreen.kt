@@ -18,6 +18,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -37,8 +38,14 @@ fun BeerDetailsScreen(selectedBeerId: Int?, navController: NavHostController) {
     val beerDetailsViewModel = hiltViewModel<BeerDetailsViewModel>()
     val state = beerDetailsViewModel.state.collectAsState().value
 
+    LaunchedEffect(key1 =  Unit ){
+        beerDetailsViewModel.processIntent(
+            BeerDetailsScreenIntent.LoadBeerDetails,
+            selectedBeerId
+        )
+    }
     Scaffold(topBar = {
-        ToolBar(title = "Beers Details ") {
+        ToolBar(title = "Beer Details") {
             navController.popBackStack()
         }
     }) { padding ->
@@ -49,10 +56,6 @@ fun BeerDetailsScreen(selectedBeerId: Int?, navController: NavHostController) {
         ) {
             when {
                 state.isLoading -> {
-                    beerDetailsViewModel.processIntent(
-                        BeerDetailsScreenIntent.LoadBeerDetails,
-                        selectedBeerId
-                    )
                     LoadingScreen()
                 }
 
@@ -71,7 +74,9 @@ fun BeerDetailsScreen(selectedBeerId: Int?, navController: NavHostController) {
 
 @Composable
 fun BeerDetailsScreenContent(beerDetails: BeersDomainModel) {
-    Column (modifier = Modifier.verticalScroll(rememberScrollState()).fillMaxSize(),
+    Column (modifier = Modifier
+        .verticalScroll(rememberScrollState())
+        .fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally){
         beerDetails.imageUrl?.let { BeerDetailsImage(backDropUrl = it) }
         beerDetails.name?.let { BeerDetailsTitle(title = it) }

@@ -6,18 +6,15 @@ import com.example.punkapp.domain.domainModels.BeersDomainModel
 import com.example.punkapp.domain.domainModels.VolumeDomainModel
 import com.example.punkapp.presentation.screens.beersList.mvi.BeersScreenState
 import com.example.punkapp.presentation.screens.beersList.BeersViewModel
-import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.junit.Test
 import org.junit.Assert.*
-import org.junit.Before
 import org.junit.Rule
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
-
 
 @ExperimentalCoroutinesApi
 @RunWith(JUnit4::class)
@@ -54,11 +51,6 @@ class BeersViewModelTest {
     private val dummyBeersList = listOf(beerOne, beerTwo, beerThree)
 
     private lateinit var viewModel: BeersViewModel
-
-    @Before
-    fun setUp() {
-        MockKAnnotations.init(this)
-    }
 
     @Test
     fun `call to getBeersList should return with proper list data`() = runTest {

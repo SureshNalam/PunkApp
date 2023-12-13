@@ -9,20 +9,15 @@ import com.example.punkapp.domain.dto.MashTemp
 import com.example.punkapp.domain.dto.Method
 import com.example.punkapp.domain.dto.Temp
 import com.example.punkapp.domain.dto.Volume
-import com.example.punkapp.domain.repository.BeerDetailsRepository
 import com.example.punkapp.domain.repository.BeerDetailsRepositoryImpl
-import com.example.punkapp.domain.repository.BeersRepositoryImpl
-import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.junit.Test
 import org.junit.Assert.*
-import org.junit.Before
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
-
 
 @ExperimentalCoroutinesApi
 @RunWith(JUnit4::class)
@@ -63,12 +58,6 @@ class BeerDetailsRepositoryTest {
 
     private val dummySingleBeersList = listOf<BeersDto>(beerOne)
     private val dummyId = 123
-
-
-    @Before
-    fun setUp() {
-        MockKAnnotations.init(this)
-    }
 
     @Test
     fun `when we fetch the beers list, then we get the list of beers from api`() = runTest {
